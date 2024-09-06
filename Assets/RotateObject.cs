@@ -1,45 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    public float sensitivity = 1f;
-    private float rotationY = 0f;
-    private float rotationX = 0f;
+    public float sensitivity = 10f;
     private bool isRotating = false;
 
-    // Update is called once per frame
     void Update()
     {
+        // Detectar quando o botão esquerdo do mouse é pressionado
         if (Input.GetMouseButtonDown(0))
         {
             isRotating = true;
-            Debug.Log("Rotation" + rotationY);
-            Debug.Log("Rotation" + rotationX);
-
         }
-        else if (Input.GetMouseButtonUp(0))
+
+        // Detectar quando o botão esquerdo do mouse é solto
+        if (Input.GetMouseButtonUp(0))
         {
             isRotating = false;
-            Debug.Log("Rotation" + rotationY);
-            Debug.Log("Rotation" + rotationX);
         }
 
+        // Aplicar rotação enquanto o botão esquerdo está pressionado
         if (isRotating)
         {
-            //Capturar o movimento do mouse;
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
-            
-            //Calcular a rotação com base na sensibilidade
-            rotationX += mouseX * sensitivity;
-            rotationY += mouseY * sensitivity;
-            
-            //aplico a rotação no objeto.
-            transform.localRotation = Quaternion.Euler(rotationY, rotationX, 0);
-            //transform.Rotate(0,0,0);
+            float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+
+            // Rotacionar o GameObject vazio (pai) ao redor de seus eixos locais
+            transform.Rotate(Vector3.up, -mouseX, Space.Self); // Rotação em torno do eixo Y
+            transform.Rotate(Vector3.right, mouseY, Space.Self); // Rotação em torno do eixo X
         }
     }
 }
