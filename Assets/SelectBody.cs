@@ -10,6 +10,8 @@ public class SelectBody : MonoBehaviour
     [SerializeField] private GameObject tronco;
     [SerializeField] private GameObject bracos;
     [SerializeField] private GameObject pernas;
+    [SerializeField] private GameObject sistemaDigestorio;
+    [SerializeField] private GameObject cerebro;
     void Start()
     {
         /*cube.SetActive(true);
@@ -18,6 +20,8 @@ public class SelectBody : MonoBehaviour
         tronco.SetActive(true);
         bracos.SetActive(true);
         pernas.SetActive(true);
+        sistemaDigestorio.SetActive(true);
+        cerebro.SetActive(true);
     }
 
     public void BtnShowCranio(){
@@ -42,6 +46,18 @@ public class SelectBody : MonoBehaviour
         if (pernas != null){
             // Alterna o estado ativo/inativo do GameObject 'cranio'
             pernas.SetActive(!pernas.activeSelf);
+        }
+    }
+    public void BtnShowSistemaDigestorio(){
+        if (sistemaDigestorio != null){
+            // Alterna o estado ativo/inativo do GameObject 'cranio'
+            sistemaDigestorio.SetActive(!sistemaDigestorio.activeSelf);
+        }
+    }
+    public void BtnShowCerebro(){
+        if (cerebro != null){
+            // Alterna o estado ativo/inativo do GameObject 'cranio'
+            cerebro.SetActive(!cerebro.activeSelf);
         }
     }
 
